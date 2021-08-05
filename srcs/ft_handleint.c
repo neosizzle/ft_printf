@@ -35,7 +35,7 @@ char	*ft_itoa_len(int num, int *print_len)
 		num *= -1;
 		(*print_len) ++;
 	}
-	while (num)
+	while (num > 0)
 	{
 		res[i--] = (num % 10 ) + '0';
 		num /= 10;
