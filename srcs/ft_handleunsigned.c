@@ -20,10 +20,10 @@ static int	get_unsigned_num_len(unsigned int num)
 }
 
 //allocates mem and converts long to str
-char	*ft_itoa_len(int num, unsigned int *print_len)
+static char	*ft_itoa_len_uns(unsigned int num, int *print_len)
 {
 	char	*res;
-	unsigned int		i;
+	int		i;
 
 	i = get_unsigned_num_len(num);
 	res = (char *)malloc(sizeof(char) * i + 1);
