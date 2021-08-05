@@ -7,8 +7,8 @@
 # include <stdlib.h>
 
 //Types and structs
-#define YES 1
-#define NO 0
+# define YES 1
+# define NO 0
 
 //struct to store either width or percision values
 typedef struct s_wpvalue
