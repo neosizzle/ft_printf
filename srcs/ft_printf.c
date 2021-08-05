@@ -16,7 +16,7 @@ void	process_format(t_format format, int *print_len, va_list argp)
 	else if (format.type == INTEGER || format.type == DECIMAL)
 		ft_handleint(print_len, format, argp);
 	else if (format.type == UNSIGNED_INTEGER)
-		ft_handle_unisnged(print_len, format, argp);
+		ft_handle_unsigned(print_len, format, argp);
 }
 
 //this function will populate a format struct according
