@@ -2,7 +2,7 @@
 
 //this file has functions that handles the ints
 
-static int	get_signed_num_len(int)
+static int	get_signed_num_len(int num)
 {
 	int	res;
 
