@@ -8,39 +8,41 @@
 void	process_format(t_format format, int *print_len, va_list argp)
 {
 	if (format.type == STRING)
-	{
-		(*print_len)++;
-		ft_putstr_fd(va_arg(argp, char *), 1);
-	}
+		ft_handlestr(print_len, format, argp);
+	else if (format.type == CHARACTER)
+		ft_handlechar(print_len, format, argp);
+	else if (format.type == POINTER)
+		ft_handlepointer(print_len, format, argp);
 }
 
 //this function will populate a format struct according
 //to the input. 
 //returns 1 if succeed and 0 if it doses not
-int	populate_format(t_format *format, const char **input, int *index)
+int	populate_format(t_format *format, char **input, int *index)
 {
 	char	current;
 
 	current = (*input)[*index];
 	if (ft_isdigit(current))
 	{
-		ft_putstr_fd("witdth found!\n", 1);
 		format->width.exist = YES;
-		//process for moving pointer to the dot 
+		format->width.value = ft_move_atoi(input, index);
 	}
 	if ((*input)[*index] == '.')
 	{
 		current = (*input)[++(*index)];
 		format->percision.exist = YES;
 		if (ft_isdigit(current))
-			ft_putstr_fd("percision found!\n", 1);
+			format->percision.value = ft_move_atoi(input, index);
 		else
 			format->percision.value = 0;
 	}
-	if (current == STRING || current == CHARACTER || current == INTEGER || current == UNSIGNED_INTEGER || current == HEX_LOWCASE || current == HEX_UPCASE || current == PERCENT)
+	current = (*input)[*index];
+	if (current == STRING || current == CHARACTER || current == POINTER || current == INTEGER || current == UNSIGNED_INTEGER || current == HEX_LOWCASE || current == HEX_UPCASE || current == PERCENT)
 		format->type = current;
 	else
 		return (0);
+	(*input)++;
 	return (1);
 }
 
@@ -58,7 +60,7 @@ void	reset_format(t_format *format)
 //2. populate the format type
 //3. process the format and print accordingly with argp
 //if not, just print that character to the screen
-int	parse_input(const char *input, va_list argp)
+int	parse_input(char *input, va_list argp)
 {
 	int	print_len;
 	int	i;
@@ -75,6 +77,7 @@ int	parse_input(const char *input, va_list argp)
 			if (!populate_format(&format, &input, &i))
 				return (-1);
 			process_format(format, &print_len, argp);
+			va_arg(argp, int);
 		}
 		else
 		{
@@ -91,14 +94,25 @@ int	ft_printf(const char *input, ...)
 	int		res;
 
 	va_start(argp, input);
-	res = parse_input(input, argp);
-	va_end(argp);
+	res = parse_input((char *)input, argp);
 	return (res);
 }
+
 #include <stdio.h>
 int	main()
 {
-	//ft_printf("hello%s");
+	char *s = "vsdfasdfasdf";
+	char *s2 = "hjjhjjl";	
+	int		d = 2323;
+	unsigned int a = 123;
+	long g = 234;
+
+	int res = ft_printf("|%p, %16p, %23p, %p, %4p|", s, &s2[3] , &d, &a, &g);
+	printf("\n");
+	int res2 = printf("|%p, %16p, %23p, %p, %4p|", s, &s2[3] , &d, &a, &g);
+	printf("\n");
+	printf("%d\n", res);
+	printf("%d\n",res2);
 	//printf("|%8.1d|\n", 1234);
 	return 0;
 }
