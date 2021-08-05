@@ -24,7 +24,8 @@ typedef enum e_format_type
 	STRING = 's',
 	CHARACTER = 'c',
 	POINTER = 'p',
-	INTEGER = 'd',
+	INTEGER = 'i',
+	DECIMAL = 'd',
 	UNSIGNED_INTEGER = 'u',
 	HEX_LOWCASE = 'x',
 	HEX_UPCASE = 'X',
@@ -49,14 +50,17 @@ void	reset_format(t_format *format);
 //processing format
 void	process_format(t_format format, int *print_len, va_list argp);
 void	ft_handle_width(int	*print_len, int width, int is_space);
+void	ft_handle_percision(int *print_len, unsigned long num, int percision);
 void	ft_handlestr(int *print_len, t_format format, va_list argp);
 void	ft_handlechar(int *print_len, t_format format, va_list argp);
 void	ft_handlepointer(int *print_len, t_format format, va_list argp);
+void	ft_handleint(int *print_len, t_format format, va_list argp);
 
 //utils
 int		ft_move_atoi(char **input, int *i);
 int		ft_min(int a, int b);
-int		get_num_len(unsigned int num);
+int		get_num_len(unsigned long num);
 void	generate_addr_str(unsigned long addr, char *hex, int count, int *print_len);
+char	*ft_ltoa(unsigned long num);
 
 #endif

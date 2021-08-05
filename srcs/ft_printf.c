@@ -13,6 +13,10 @@ void	process_format(t_format format, int *print_len, va_list argp)
 		ft_handlechar(print_len, format, argp);
 	else if (format.type == POINTER)
 		ft_handlepointer(print_len, format, argp);
+	else if (format.type == INTEGER)
+		ft_handleint(print_len, format, argp);
+	else if (format.type == DECIMAL)
+		ft_handleint(print_len, format, argp);
 }
 
 //this function will populate a format struct according
@@ -38,7 +42,7 @@ int	populate_format(t_format *format, char **input, int *index)
 			format->percision.value = 0;
 	}
 	current = (*input)[*index];
-	if (current == STRING || current == CHARACTER || current == POINTER || current == INTEGER || current == UNSIGNED_INTEGER || current == HEX_LOWCASE || current == HEX_UPCASE || current == PERCENT)
+	if (current == STRING || current == CHARACTER || current == POINTER || current == INTEGER || current == DECIMAL || current == UNSIGNED_INTEGER || current == HEX_LOWCASE || current == HEX_UPCASE || current == PERCENT)
 		format->type = current;
 	else
 		return (0);

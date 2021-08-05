@@ -4,7 +4,7 @@
 //this file has functions that handles the pointers
 
 //this function returns the length of number
-int	get_num_len(unsigned int num)
+int	get_num_len(unsigned long num)
 {
 	int	res;
 
