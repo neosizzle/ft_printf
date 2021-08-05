@@ -98,21 +98,21 @@ int	ft_printf(const char *input, ...)
 	return (res);
 }
 
-#include <stdio.h>
-int	main()
-{
-	//char *s = "vsdfasdfasdf";
-	//char *s2 = "hjjhjjl";	
-	//int		d = 2323;
-	//unsigned int a = 123;
-	//long g = 234;
+// #include <stdio.h>
+// int	main()
+// {
+// 	//char *s = "vsdfasdfasdf";
+// 	//char *s2 = "hjjhjjl";	
+// 	//int		d = 2323;
+// 	//unsigned int a = 123;
+// 	//long g = 234;
 
-	int res = ft_printf(" %s %s %s %s %s ", " - ", "", "4", "", "2 ");
-	printf("\n");
-	int res2 = printf(" %s %s %s %s %s ", " - ", "", "4", "", "2 ");
-	printf("\n");
-	printf("%d\n", res);
-	printf("%d\n",res2);
-	//printf("|%8.1d|\n", 1234);
-	return 0;
-}
+// 	int res = ft_printf(" %s %s %s %s %s ", " - ", "", "4", "", "2 ");
+// 	printf("\n");
+// 	int res2 = printf(" %s %s %s %s %s ", " - ", "", "4", "", "2 ");
+// 	printf("\n");
+// 	printf("%d\n", res);
+// 	printf("%d\n",res2);
+// 	//printf("|%8.1d|\n", 1234);
+// 	return 0;
+// }
