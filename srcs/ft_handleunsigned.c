@@ -20,7 +20,7 @@ static int	get_unsigned_num_len(unsigned int num)
 }
 
 //allocates mem and converts long to str
-static char	*ft_itoa_uns(unsigned int num, int *print_len)
+static char	*ft_itoa_uns(unsigned int num)
 {
 	char	*res;
 	int		i;
