@@ -20,7 +20,7 @@ static int	get_unsigned_num_len(unsigned int num)
 }
 
 //allocates mem and converts long to str
-static char	*ft_itoa_len_uns(unsigned int num, int *print_len)
+static char	*ft_itoa_uns(unsigned int num, int *print_len)
 {
 	char	*res;
 	int		i;
@@ -55,7 +55,7 @@ void	ft_handle_unsigned(int *print_len, t_format format, va_list argp)
 		ft_handle_width(print_len, format.width.value - num_len, 1);
 	if (format.percision.exist)
 		ft_handle_percision(print_len, num, format.percision.value);
-	num_str = ft_itoa(num);
+	num_str = ft_itoa_uns(num);
 	write(1, num_str, num_len);
 	(*print_len) += num_len;
 	free(num_str);
