@@ -2,7 +2,7 @@
 
 //this file has functions that handles the ints
 
-static int	get_signed_num_len(long num)
+static int	get_signed_num_len(int)
 {
 	int	res;
 
@@ -16,7 +16,7 @@ static int	get_signed_num_len(long num)
 }
 
 //allocates mem and converts long to str
-char	*ft_ltoa(long num)
+char	*ft_itoa(int)
 {
 	char	*res;
 	int		i;
@@ -49,13 +49,13 @@ void	ft_handleint(int *print_len, t_format format, va_list argp)
 	int				num_len;
 	char			*num_str;
 
-	num = va_arg(argp, long);
+	num = va_arg(argp, int);
 	num_len = get_signed_num_len(num);
 	if (format.width.exist)
 		ft_handle_width(print_len, format.width.value - num_len, 1);
 	if (format.percision.exist)
 		ft_handle_percision(print_len, num, format.percision.value);
-	num_str = ft_ltoa(num);
+	num_str = ft_itoa(num);
 	write(1, num_str, num_len);
 	(*print_len) += num_len;
 	free(num_str);
