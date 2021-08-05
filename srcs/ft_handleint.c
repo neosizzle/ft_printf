@@ -7,6 +7,11 @@ static int	get_signed_num_len(int num)
 	int	res;
 
 	res = 0;
+	if (num < 0)
+	{
+		num *= -1;
+		res++;
+	}
 	while (num)
 	{
 		num /= 10;
