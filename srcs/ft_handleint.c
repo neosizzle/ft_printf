@@ -20,9 +20,7 @@ char	*ft_ltoa(long num)
 {
 	char	*res;
 	int		i;
-	int		negative;
 
-	negative = 0;
 	i = get_signed_num_len(num);
 	res = (char *)malloc(sizeof(char) * get_signed_num_len(num) + 1);
 	res[i--] = 0;
