@@ -52,7 +52,7 @@ char	*ft_itoa_len(int num, int *print_len)
 //shell
 void	ft_handleint(int *print_len, t_format format, va_list argp)
 {
-	long	num;
+	int	num;
 	int				num_len;
 	char			*num_str;
 
