@@ -24,6 +24,10 @@ char	*ft_ltoa(long num)
 	i = 0;
 	res = (char *)malloc(sizeof(char) * get_signed_num_len(num));
 	if (num < 0)
+	{
+		res[i++] = '-';
+		num *= -1;
+	}
 	while (num)
 	{
 		res[i++] = '0' + (num % 10);
