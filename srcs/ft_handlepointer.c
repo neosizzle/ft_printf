@@ -17,7 +17,7 @@ int	get_num_len(unsigned int num)
 	return (res);
 }
 
-void	generate_addr_str(unsigned int addr, char *hex, int count, int *print_len)
+void	generate_addr_str(unsigned long addr, char *hex, int count, int *print_len)
 {
 	int	first;
 
@@ -38,11 +38,11 @@ void	generate_addr_str(unsigned int addr, char *hex, int count, int *print_len)
 
 void	ft_handlepointer(int *print_len, t_format format, va_list argp)
 {
-	unsigned int	addr;
+	unsigned long	addr;
 	char			*hex;
 	int				offset;
 
-	addr = va_arg(argp, unsigned int);
+	addr = va_arg(argp, unsigned long);
 	hex = "0123456789abcdef";
 	//printf("%u\n", addr)
 	if (addr > 2147483647)

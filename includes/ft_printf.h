@@ -57,6 +57,6 @@ void	ft_handlepointer(int *print_len, t_format format, va_list argp);
 int		ft_move_atoi(char **input, int *i);
 int		ft_min(int a, int b);
 int		get_num_len(unsigned int num);
-void	generate_addr_str(unsigned int addr, char *hex, int count, int *print_len);
+void	generate_addr_str(unsigned long addr, char *hex, int count, int *print_len);
 
 #endif
