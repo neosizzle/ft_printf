@@ -16,7 +16,7 @@ static int	get_signed_num_len(int num)
 }
 
 //allocates mem and converts long to str
-char	*ft_itoa(int num, int *print_len)
+char	*ft_itoa_len(int num, int *print_len)
 {
 	char	*res;
 	int		i;
