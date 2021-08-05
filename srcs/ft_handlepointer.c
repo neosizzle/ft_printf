@@ -24,23 +24,11 @@ void	generate_addr_str(unsigned int addr, char *hex, int count, int *print_len)
 	first = 1;
 	if (addr == 0)
 	{
-		if (count == 8)
+		if (!count)
 		{
-			(*print_len) += 10;
-			return ;
+			ft_putchar_fd(hex[addr % 16], 1);
 		}
-		while (count < 9)
-		{
-			if (first)
-			{
-				ft_putchar_fd('1', 1);
-				first = 0;
-			}
-			else
-				ft_putchar_fd('0', 1);
-			count++;
-		}
-		(*print_len) += 11;
+		(*print_len) += count+2;
 		return ;
 	}
 	generate_addr_str(addr >> 4, hex, count + 1, print_len);
