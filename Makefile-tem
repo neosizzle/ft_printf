@@ -5,14 +5,13 @@ ARRCS = ar rcs
 LIBS = libft
 CCFLAGS = -Wall -Werror -Wextra
 CC = gcc
-NAME = libftprintf.a
+NAME = libftprintf
 
 all : ${NAME}
 
 ${NAME} : 
 	make re -C ${LIBS}
-	${CC} ${CCFLAGS} -c ${SRCS} -I ${INCLUDE}
-	${ARRCS} ${NAME} ${OBJS}
+	${CC} ${CCFLAGS} ${SRCS} -I ${INCLUDE}
 
 clean : 
 	rm ${OBJS}
