@@ -20,19 +20,23 @@ char	*ft_ltoa(long num)
 {
 	char	*res;
 	int		i;
+	int		negative;
 
-	i = 0;
-	res = (char *)malloc(sizeof(char) * get_signed_num_len(num));
+	negative = 0;
+	i = get_signed_num_len(num);
+	res = (char *)malloc(sizeof(char) * get_signed_num_len(num) + 1);
 	if (num < 0)
 	{
-		res[i++] = '-';
-		num *= -1;
+		res[0] = '-';
+		negative = 1;
 	}
 	while (num)
 	{
-		res[i++] = '0' + (num % 10);
+		res[i--] = '0' + (num % 10);
 		num /= 10;
 	}
+	if (!negative)
+		++res;
 	return (res);
 }
 
