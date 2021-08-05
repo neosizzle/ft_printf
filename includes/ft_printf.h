@@ -55,7 +55,7 @@ void	ft_handlestr(int *print_len, t_format format, va_list argp);
 void	ft_handlechar(int *print_len, t_format format, va_list argp);
 void	ft_handlepointer(int *print_len, t_format format, va_list argp);
 void	ft_handleint(int *print_len, t_format format, va_list argp);
-void	ft_handle_unsigned(unsigned int *print_len, t_format format, va_list argp);
+void	ft_handle_unsigned(int *print_len, t_format format, va_list argp);
 //utils
 int		ft_move_atoi(char **input, int *i);
 int		ft_min(int a, int b);
