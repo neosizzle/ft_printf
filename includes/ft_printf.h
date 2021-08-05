@@ -1,10 +1,10 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include "../libft/libft.h"
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
+# include "../libft/libft.h"
+# include <stdarg.h>
+# include <unistd.h>
+# include <stdlib.h>
 
 //Types and structs
 #define YES 1
@@ -33,9 +33,9 @@ typedef enum e_format_type
 //struct to store the current format
 typedef struct s_format
 {
-	t_wpvalue width;
-	t_wpvalue percision;
-	t_format_type type;
+	t_wpvalue		width;
+	t_wpvalue		percision;
+	t_format_type	type;
 }	t_format;
 
 //the functions
