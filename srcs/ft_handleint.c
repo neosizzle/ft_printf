@@ -56,5 +56,5 @@ void	ft_handleint(int *print_len, t_format format, va_list argp)
 	num_str = ft_ltoa(num);
 	write(1, num_str, num_len);
 	(*print_len) += num_len;
-	free(num_str);
+	//free(num_str);
 }
