@@ -20,5 +20,9 @@ void	ft_handle_width(int *print_len, int width, int is_space)
 
 void	ft_handle_percision(int *print_len, long num, int percision)
 {
-	ft_putchar_fd('t',1);
+	if (num)
+	{
+		ft_putnbr_fd(*print_len, 1);
+		ft_putnbr_fd(percision, 1);
+	}
 }

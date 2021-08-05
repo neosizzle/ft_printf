@@ -43,7 +43,7 @@ void	ft_handleint(int *print_len, t_format format, va_list argp)
 	if (format.width.exist)
 		ft_handle_width(print_len, format.width.value - num_len, 1);
 	if (format.percision.exist)
-		ft_handle_percision(print_len, num, format.percision);
+		ft_handle_percision(print_len, num, format.percision.value);
 	num_str = ft_ltoa(num);
 	write(1, num_str, num_len);
 	free(num_str);
