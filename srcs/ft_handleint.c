@@ -21,6 +21,7 @@ char	*ft_ltoa(long num)
 	char	*res;
 	int		i;
 
+	i = 0;
 	res = (char *)malloc(sizeof(char) * get_signed_num_len(num));
 	if (num < 0)
 	while (num)
