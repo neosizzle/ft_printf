@@ -77,7 +77,7 @@ int	parse_input(char *input, va_list argp)
 			if (!populate_format(&format, &input, &i))
 				return (-1);
 			process_format(format, &print_len, argp);
-			va_arg(argp, int);
+			//va_arg(argp, int);
 		}
 		else
 		{
