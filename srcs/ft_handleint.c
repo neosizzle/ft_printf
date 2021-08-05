@@ -7,7 +7,7 @@ static int	get_signed_num_len(int num)
 	int	res;
 
 	res = 0;
-	if (num < 0)
+	if (num <= 0)
 	{
 		num *= -1;
 		res++;
@@ -31,7 +31,8 @@ char	*ft_itoa_len(int num, int *print_len)
 	res[i--] = 0;
 	if (num == 0)
 	{
-		res[0] = 48;
+		res[0] = '0';
+		(*print_len) ++;
 		return (res);
 	}
 	if (num < 0)
