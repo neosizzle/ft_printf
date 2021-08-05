@@ -61,6 +61,6 @@ int		ft_move_atoi(char **input, int *i);
 int		ft_min(int a, int b);
 int		get_num_len(unsigned long num);
 void	generate_addr_str(unsigned long addr, char *hex, int count, int *print_len);
-char	*ft_itoa(int num);
+char	*ft_itoa(int num, int *print_len);
 
 #endif
