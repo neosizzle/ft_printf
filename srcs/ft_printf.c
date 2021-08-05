@@ -13,10 +13,10 @@ void	process_format(t_format format, int *print_len, va_list argp)
 		ft_handlechar(print_len, format, argp);
 	else if (format.type == POINTER)
 		ft_handlepointer(print_len, format, argp);
-	else if (format.type == INTEGER)
+	else if (format.type == INTEGER || format.type == DECIMAL)
 		ft_handleint(print_len, format, argp);
-	else if (format.type == DECIMAL)
-		ft_handleint(print_len, format, argp);
+	else if (format.type == UNSIGNED_INTEGER)
+		ft_handle_unisnged(print_len, format, argp);
 }
 
 //this function will populate a format struct according
