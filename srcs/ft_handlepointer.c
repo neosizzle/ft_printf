@@ -27,6 +27,7 @@ void	generate_addr_str(unsigned int addr, char *hex, int count, int *print_len)
 		if (!count)
 		{
 			ft_putchar_fd(hex[addr % 16], 1);
+			(*print_len) ++;
 		}
 		(*print_len) += count+2;
 		return ;
