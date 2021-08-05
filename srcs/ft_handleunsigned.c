@@ -31,7 +31,6 @@ static char	*ft_itoa_uns(unsigned int num, int *print_len)
 	if (num == 0)
 	{
 		res[0] = '0';
-		(*print_len) ++;
 		return (res);
 	}
 	while (num > 0)
