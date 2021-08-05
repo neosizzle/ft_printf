@@ -43,7 +43,7 @@ static char	*ft_itoa_len_uns(unsigned int num, int *print_len)
 }
 
 //shell
-void	ft_handle_unsigned(unsigned int *print_len, t_format format, va_list argp)
+void	ft_handle_unsigned(int *print_len, t_format format, va_list argp)
 {
 	unsigned int	num;
 	int				num_len;
