@@ -26,7 +26,7 @@ char	*ft_ltoa(long num)
 	if (num < 0)
 	while (num)
 	{
-		res[i++] = num % 10;
+		res[i++] = '0' + (num % 10);
 		num /= 10;
 	}
 	return (res);
@@ -47,5 +47,6 @@ void	ft_handleint(int *print_len, t_format format, va_list argp)
 		ft_handle_percision(print_len, num, format.percision.value);
 	num_str = ft_ltoa(num);
 	write(1, num_str, num_len);
+	(*print_len) += num_len;
 	free(num_str);
 }
