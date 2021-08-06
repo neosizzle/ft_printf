@@ -16,19 +16,19 @@ int	get_num_len(unsigned long num)
 	return (res);
 }
 
-void	generate_addr_str(unsigned long addr, char *hex, int count, int *print_len)
+void	generate_addr_str(unsigned long addr, char *hex, int count, int *p_l)
 {
 	if (addr == 0)
 	{
 		if (!count)
 		{
 			ft_putchar_fd(hex[addr % 16], 1);
-			(*print_len) ++;
+			(*p_l) ++;
 		}
-		(*print_len) += count+2;
+		(*p_l) += count+2;
 		return ;
 	}
-	generate_addr_str(addr >> 4, hex, count + 1, print_len);
+	generate_addr_str(addr >> 4, hex, count + 1, p_l);
 	ft_putchar_fd(hex[addr % 16], 1);
 }
 
