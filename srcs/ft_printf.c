@@ -120,7 +120,7 @@ int	ft_printf(const char *input, ...)
 	res = parse_input((char *)input, argp);
 	return (res);
 }
-
+//
 // #include <stdio.h>
 // int	main()
 // {
