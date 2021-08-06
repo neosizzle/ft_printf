@@ -71,5 +71,6 @@ void	generate_addr_str(unsigned long addr, char *hex, int count, int *p_l);
 char	*generate_percise_str(char *num_str, int percision, long num);
 char	*ft_itoa_len(int num, int *print_len);
 char	*ft_itoa_base(unsigned int num, char *enc, int len, unsigned int base);
+void	gen_hex(char c, char **hex);
 
 #endif

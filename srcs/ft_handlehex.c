@@ -31,20 +31,17 @@ char	*ft_itoa_base(unsigned int num, char *enc, int len, unsigned int base)
 	return (res);
 }
 
-static void	gen_hex(char c, char **hex)
+static void	write_width_num(int numlen, t_format format, int *p_l, char *num_str)
 {
-	if (format.type == HEX_LOWCASE)
-		return("0123456789abcdef");
-	else
-		return("0123456789ABCDEF");
+	if (format.width.exist)
+		ft_handle_width(p_l, format.width.value - numlen, format.is_space);
+	ft_putstr_fd(num_str, 1);
 }
 
-static void	init_vars(int *numlen, int *num_str, char **hex, unsigned int *num , va_list argp)
+static void	init_vars(int *numlen, char **num_str, int num, char *hex)
 {
 	*numlen = get_num_len_base(num, 16);
 	*num_str = ft_itoa_base(num, hex, numlen, 16);
-	*hex = gen_hex(format.type);
-	*num = va_arg(argp, unsigned int);
 }	
 
 void	ft_handlehex(int *p_l, t_format format, va_list argp)
@@ -54,7 +51,9 @@ void	ft_handlehex(int *p_l, t_format format, va_list argp)
 	char			*hex;
 	char			*num_str;
 
-	init_vars(&numlen, &num_str, &hex, &num);
+	hex = gen_hex(format.type);
+	num = va_arg(argp, unsigned int);
+	init_vars(&numlen, &num_str);
 	if (format.percision.exist)
 	{
 		num_str = generate_percise_str(num_str, format.percision.value, num);
@@ -67,11 +66,7 @@ void	ft_handlehex(int *p_l, t_format format, va_list argp)
 			ft_handle_width(p_l, format.width.value - numlen, format.is_space);
 	}
 	else
-	{
-		if (format.width.exist)
-			ft_handle_width(p_l, format.width.value - numlen, format.is_space);
-		ft_putstr_fd(num_str, 1);
-	}
+		write_width_num(numlen, format, p_l, num_str);
 	(*p_l) += numlen;
 	free(num_str);
 }
