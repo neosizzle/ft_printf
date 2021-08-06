@@ -22,9 +22,9 @@ char	*ft_itoa_base(unsigned int num, char *encode, int len, unsigned int base)
 
 	res = (char *)malloc(sizeof(char) * (len + 1));
 	res[len--] = 0;
-	while (len)
+	while (len >= 0)
 	{
-		res[len] = encode[0];
+		res[len] = encode[num % base];
 		num /= base;
 		len--;
 	}
