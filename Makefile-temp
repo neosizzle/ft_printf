@@ -3,18 +3,15 @@ OBJS=*.o
 INCLUDE = includes
 ARRCS = ar rcs
 LIBS = libft
-CCFLAGS = -Wall -Werror -Wextra
+CCFLAGS = -Wall -Werror -Wextra -fsanitize=address
 CC = gcc
-NAME = libftprintf.a
+NAME = libftprintf
 
 all : ${NAME}
 
-bonus : ${NAME}
-
 ${NAME} : 
 	make re -C ${LIBS}
-	${CC} ${CCFLAGS} -c ${SRCS} -I ${INCLUDE}
-	${ARRCS} ${NAME} ${OBJS}
+	${CC} ${CCFLAGS} ${SRCS} -I ${INCLUDE}
 
 clean : 
 	rm ${OBJS}
