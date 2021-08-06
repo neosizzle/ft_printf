@@ -34,7 +34,6 @@ int	populate_format(t_format *format, char **input, int *index)
 	char	current;
 
 	current = (*input)[*index];
-
 	if ((*input)[*index] == '-')
 	{
 		format->is_minus = YES;
@@ -86,9 +85,9 @@ void	reset_format(t_format *format)
 //if not, just print that character to the screen
 int	parse_input(char *input, va_list argp)
 {
-	int	print_len;
-	int	i;
-	t_format format;
+	int			print_len;
+	int			i;
+	t_format	format;
 
 	print_len = 0;
 	i = 0;
@@ -107,7 +106,6 @@ int	parse_input(char *input, va_list argp)
 			ft_putchar_fd(input[i++], 1);
 			print_len++;
 		}
-		//va_arg(argp, int);
 	}
 	return (print_len);
 }

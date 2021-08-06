@@ -1,13 +1,13 @@
 #include "ft_printf.h"
 //this file has functions that handles the hex
 
-int get_num_len_base(unsigned int num, int base)
+int	get_num_len_base(unsigned int num, int base)
 {
 	int	res;
 
 	res = 0;
 	if (num == 0)
-		return(++res);
+		return (++res);
 	while (num > 0)
 	{
 		res++;
@@ -18,7 +18,7 @@ int get_num_len_base(unsigned int num, int base)
 
 char	*ft_itoa_base(unsigned int num, char *enc, int len, unsigned int base)
 {
-	char *res;
+	char	*res;
 
 	res = (char *)malloc(sizeof(char) * (len + 1));
 	res[len--] = 0;
@@ -31,7 +31,7 @@ char	*ft_itoa_base(unsigned int num, char *enc, int len, unsigned int base)
 	return (res);
 }
 
-void	ft_handlehex(int *print_len, t_format format, va_list argp)
+void	ft_handlehex(int *p_l, t_format format, va_list argp)
 {
 	unsigned int	num;
 	int				numlen;
@@ -54,14 +54,14 @@ void	ft_handlehex(int *print_len, t_format format, va_list argp)
 	{
 		ft_putstr_fd(num_str, 1);
 		if (format.width.exist)
-			ft_handle_width(print_len, format.width.value - numlen, format.is_space);
+			ft_handle_width(p_l, format.width.value - numlen, format.is_space);
 	}
 	else
 	{
 		if (format.width.exist)
-			ft_handle_width(print_len, format.width.value - numlen, format.is_space);
+			ft_handle_width(p_l, format.width.value - numlen, format.is_space);
 		ft_putstr_fd(num_str, 1);
 	}
-	(*print_len) += numlen;
+	(*p_l) += numlen;
 	free(num_str);
 }
