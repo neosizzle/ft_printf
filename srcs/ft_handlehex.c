@@ -41,7 +41,7 @@ static void	write_width_num(int nl, t_format format, int *p_l, char *num_str)
 static void	init_vars(int *numlen, char **num_str, int num, char *hex)
 {
 	*numlen = get_num_len_base(num, 16);
-	*num_str = ft_itoa_base(num, hex, numlen, 16);
+	*num_str = ft_itoa_base(num, hex, *numlen, 16);
 }	
 
 void	ft_handlehex(int *p_l, t_format format, va_list argp)
@@ -53,7 +53,7 @@ void	ft_handlehex(int *p_l, t_format format, va_list argp)
 
 	hex = gen_hex(format.type);
 	num = va_arg(argp, unsigned int);
-	init_vars(&numlen, &num_str);
+	init_vars(&numlen, &num_str, num, hex);
 	if (format.percision.exist)
 	{
 		num_str = generate_percise_str(num_str, format.percision.value, num);

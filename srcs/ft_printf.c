@@ -39,12 +39,12 @@ int	populate_format(t_format *format, char **input, int *index)
 	if ((*input)[*index] == '0')
 		toggle_zero(format, index);
 	if (ft_isdigit((*input)[*index]) && (*input)[*index] != '0')
-		toggle_width(format, input, index);
+		toggle_width(format, *input, index);
 	if ((*input)[*index] == '.')
 	{
 		format->percision.exist = YES;
 		if (ft_isdigit((*input)[++(*index)]))
-			format->percision.value = ft_move_atoi(input, index);
+			format->percision.value = ft_move_atoi(*input, index);
 		else
 			format->percision.value = 0;
 	}
