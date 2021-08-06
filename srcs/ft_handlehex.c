@@ -40,17 +40,25 @@ void	ft_handlehex(int *print_len, t_format format, va_list argp)
 
 	num = va_arg(argp, unsigned int);
 	numlen = get_num_len_base(num, 16);
+	num_str = ft_itoa_base(num, hex, numlen, 16);
 	if (format.type == HEX_LOWCASE)
 		hex = "0123456789abcdef";
 	else
 		hex = "0123456789ABCDEF";
-	if (format.width.exist)
+	if (format.is_minus)
 	{
-		if (!format.percision.exist)
-			ft_handle_width(print_len, format.width.value - numlen, 1);
+		ft_putstr_fd(num_str, 1);
+		if (format.width.exist)
+			if (!format.percision.exist)
+				ft_handle_width(print_len, format.width.value - numlen, 1);
 	}
-	num_str = ft_itoa_base(num, hex, numlen, 16);
+	else
+	{
+		if (format.width.exist)
+			if (!format.percision.exist)
+				ft_handle_width(print_len, format.width.value - numlen, 1);
+		ft_putstr_fd(num_str, 1);
+	}
 	(*print_len) += numlen;
-	ft_putstr_fd(num_str, 1);
 	free(num_str);
 }
