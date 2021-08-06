@@ -64,7 +64,7 @@ void	ft_handlepercent(int *print_len);
 //utils
 int		ft_move_atoi(char **input, int *i);
 int		ft_min(int a, int b);
-int		is_in_enum(char c)
+int		is_in_enum(char c);
 int		get_num_len(unsigned long num);
 int		get_num_len_base(unsigned int num, int base);
 void	generate_addr_str(unsigned long addr, char *hex, int count, int *print_len);
