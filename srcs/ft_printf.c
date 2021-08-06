@@ -35,21 +35,11 @@ int	populate_format(t_format *format, char **input, int *index)
 
 	current = (*input)[*index];
 	if ((*input)[*index] == '-')
-	{
-		format->is_minus = YES;
-		++(*index);
-	}
+		toggle_minus(format, index);
 	if ((*input)[*index] == '0')
-	{
-		if (!format->is_minus)
-			format->is_space = NO;
-		++(*index);
-	}
+		toggle_zero(format, index);
 	if (ft_isdigit((*input)[*index]) && (*input)[*index] != '0')
-	{
-		format->width.exist = YES;
-		format->width.value = ft_move_atoi(input, index);
-	}
+		toggle_width(format, input, index);
 	if ((*input)[*index] == '.')
 	{
 		format->percision.exist = YES;
