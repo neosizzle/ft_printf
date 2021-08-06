@@ -35,26 +35,25 @@ int	populate_format(t_format *format, char **input, int *index)
 
 	current = (*input)[*index];
 
-	if (current == '-')
+	if ((*input)[*index] == '-')
 	{
 		format->is_minus = YES;
-		++(*index);
+		(*index)++;
 	}
-	if (current == '0' && !format->is_minus)
+	if ((*input)[*index] == '0' && !format->is_minus)
 	{
 		format->is_space = NO;
-		++(*index);
+		(*index)++;
 	}
-	if (ft_isdigit(current) && current != '0')
+	if (ft_isdigit((*input)[*index]) && (*input)[*index] != '0')
 	{
 		format->width.exist = YES;
 		format->width.value = ft_move_atoi(input, index);
 	}
 	if ((*input)[*index] == '.')
 	{
-		current = (*input)[++(*index)];
 		format->percision.exist = YES;
-		if (ft_isdigit(current))
+		if (ft_isdigit((*input)[++(*index)]))
 			format->percision.value = ft_move_atoi(input, index);
 		else
 			format->percision.value = 0;
@@ -101,7 +100,6 @@ int	parse_input(char *input, va_list argp)
 			if (!populate_format(&format, &input, &i))
 				return (-1);
 			process_format(format, &print_len, argp);
-			//va_arg(argp, int);
 		}
 		else
 		{
@@ -131,9 +129,9 @@ int	ft_printf(const char *input, ...)
 // 	//unsigned int a = 123;
 // 	//long g = 234;
 
-// 	int res = ft_printf(" %s %s %s %s %s ", " - ", "", "4", "", "2 ");
+// 	int res = ft_printf("%-1c", '0');
 // 	printf("\n");
-// 	int res2 = printf(" %s %s %s %s %s ", " - ", "", "4", "", "2 ");
+// 	int res2 = printf("%-1c", '0');
 // 	printf("\n");
 // 	printf("%d\n", res);
 // 	printf("%d\n",res2);

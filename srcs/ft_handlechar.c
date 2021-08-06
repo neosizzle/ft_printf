@@ -7,7 +7,7 @@ void	ft_handlechar(int *print_len, t_format format, va_list argp)
 	int	c;
 
 	c = va_arg(argp, int);
-	if (format.is_minus)
+	if (format.is_minus == YES)
 	{
 		ft_putchar_fd(c, 1);
 		if (format.width.exist)

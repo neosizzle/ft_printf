@@ -19,9 +19,6 @@ int	get_num_len(unsigned long num)
 
 void	generate_addr_str(unsigned long addr, char *hex, int count, int *print_len)
 {
-	int	first;
-
-	first = 1;
 	if (addr == 0)
 	{
 		if (!count)
