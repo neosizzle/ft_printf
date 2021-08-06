@@ -16,7 +16,7 @@ void	toggle_zero(t_format *format, int *index)
 void	toggle_minus(t_format *format, int *index)
 {
 	format->is_minus = YES;
-	++(*index)
+	++(*index);
 }
 
 void	wri_wid_num(t_format format, char *n_str, int n_len, int *p_l)
