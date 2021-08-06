@@ -31,6 +31,22 @@ char	*ft_itoa_base(unsigned int num, char *enc, int len, unsigned int base)
 	return (res);
 }
 
+static void	gen_hex(char c, char **hex)
+{
+	if (format.type == HEX_LOWCASE)
+		return("0123456789abcdef");
+	else
+		return("0123456789ABCDEF");
+}
+
+static void	init_vars(int *numlen, int *num_str, char **hex, unsigned int *num , va_list argp)
+{
+	*numlen = get_num_len_base(num, 16);
+	*num_str = ft_itoa_base(num, hex, numlen, 16);
+	*hex = gen_hex(format.type);
+	*num = va_arg(argp, unsigned int);
+}	
+
 void	ft_handlehex(int *p_l, t_format format, va_list argp)
 {
 	unsigned int	num;
@@ -38,13 +54,7 @@ void	ft_handlehex(int *p_l, t_format format, va_list argp)
 	char			*hex;
 	char			*num_str;
 
-	if (format.type == HEX_LOWCASE)
-		hex = "0123456789abcdef";
-	else
-		hex = "0123456789ABCDEF";
-	num = va_arg(argp, unsigned int);
-	numlen = get_num_len_base(num, 16);
-	num_str = ft_itoa_base(num, hex, numlen, 16);
+	init_vars(&numlen, &num_str, &hex, &num);
 	if (format.percision.exist)
 	{
 		num_str = generate_percise_str(num_str, format.percision.value, num);
