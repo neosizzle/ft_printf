@@ -52,7 +52,7 @@ void	reset_format(t_format *format);
 //processing format
 void	process_format(t_format format, int *print_len, va_list argp);
 void	ft_handle_width(int	*print_len, int width, int is_space);
-void	ft_handle_width_n(int *print_len, int width, int is_space, int num);
+void	ft_width_n(int *print_len, int width, int is_space, int num);
 void	ft_handlestr(int *print_len, t_format format, va_list argp);
 void	ft_handlechar(int *print_len, t_format format, va_list argp);
 void	ft_handlepointer(int *print_len, t_format format, va_list argp);

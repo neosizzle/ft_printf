@@ -18,7 +18,7 @@ void	ft_handle_width(int *print_len, int width, int is_space)
 	}
 }
 
-void	ft_handle_width_n(int *print_len, int width, int is_space, int num)
+void	ft_width_n(int *print_len, int width, int is_space, int num)
 {
 	char	c;
 
