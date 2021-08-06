@@ -41,10 +41,10 @@ static char	*ft_itoa_uns(unsigned int num)
 	return (res);
 }
 
-static void	print_width_write(int * p_l, t_format format, char *nstr, int n)
+static void	print_width_write(int *p_l, t_format format, char *nstr, int n)
 {
 	if (format.width.exist)
-			ft_handle_width(p_l, format.width.value - n, format.is_space);
+		ft_handle_width(p_l, format.width.value - n, format.is_space);
 	write(1, nstr, n);
 }
 
