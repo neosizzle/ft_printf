@@ -61,7 +61,7 @@ char	*generate_percise_str(char *num_str, int percision, long num)
 		return (num_str);
 	}
 	i = 0;
-	fill_neg(num , &i, res, &len);
+	fill_neg(num, &i, res, &len);
 	while (i < percision - len)
 		res[i++] = '0';
 	res[i] = 0;

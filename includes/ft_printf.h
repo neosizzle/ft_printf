@@ -72,5 +72,6 @@ char	*generate_percise_str(char *num_str, int percision, long num);
 char	*ft_itoa_len(int num, int *print_len);
 char	*ft_itoa_base(unsigned int num, char *enc, int len, unsigned int base);
 void	gen_hex(char c, char **hex);
+void	wri_wid_num(t_format format, char *n_str, int n_len, int *p_l);
 
 #endif
