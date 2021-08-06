@@ -5,7 +5,7 @@
 static void	width_write(t_format format, char *string, int len, int *p_l)
 {
 	if (format.width.exist)
-			ft_handle_width(p_l, format.width.value - (int)len, 1);
+		ft_handle_width(p_l, format.width.value - (int)len, 1);
 	write(1, string, len);
 }
 
@@ -13,7 +13,7 @@ static void	write_width(t_format format, char *string, int len, int *p_l)
 {
 	write(1, string, len);
 	if (format.width.exist)
-			ft_handle_width(p_l, format.width.value - (int)len, 1);
+		ft_handle_width(p_l, format.width.value - (int)len, 1);
 }
 
 //handle str (main func)
