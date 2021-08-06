@@ -68,6 +68,7 @@ int		is_in_enum(char c);
 int		get_num_len(unsigned long num);
 int		get_num_len_base(unsigned int num, int base);
 void	generate_addr_str(unsigned long addr, char *hex, int count, int *print_len);
+char	*generate_percise_str(char *num_str, int percision, int num);
 char	*ft_itoa_len(int num, int *print_len);
 char	*ft_itoa_base(unsigned int num, char *encode, int len, unsigned int  base);
 

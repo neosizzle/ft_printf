@@ -1,4 +1,5 @@
 #include "ft_printf.h"
+#include <stdio.h>
 
 //this file has functions that handles the width and percison
 void	ft_handle_width(int *print_len, int width, int is_space)
@@ -37,4 +38,29 @@ void	ft_handle_width_num(int *print_len, int width, int is_space, int num)
 		(*print_len)++;
 	}
 	
+}
+
+char	*generate_percise_str(char *num_str, int percision, int num)
+{
+	char	*res;
+	int		i;
+	int		len;
+
+	res = (char *)malloc(sizeof(char) * (percision + 2));
+	len = (int)ft_strlen(num_str);
+	i = 0;
+	if (num < 0)
+	{
+			res[i++] = '-';
+			len -= 2;
+	}
+	while (i < percision - len)
+		res[i++] = '0';
+	res[i] = 0;
+	if (num < 0)
+		ft_strlcat(res, num_str + 1, percision + 2);
+	else
+		ft_strlcat(res, num_str, percision + 1);
+	free(num_str);
+	return (res);
 }

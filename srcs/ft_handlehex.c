@@ -45,6 +45,11 @@ void	ft_handlehex(int *print_len, t_format format, va_list argp)
 	num = va_arg(argp, unsigned int);
 	numlen = get_num_len_base(num, 16);
 	num_str = ft_itoa_base(num, hex, numlen, 16);
+	if (format.percision.exist)
+	{
+		num_str = generate_percise_str(num_str, format.percision.value, num);
+		numlen = ft_strlen(num_str);
+	}
 	if (format.is_minus)
 	{
 		ft_putstr_fd(num_str, 1);

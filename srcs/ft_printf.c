@@ -132,9 +132,9 @@ int	ft_printf(const char *input, ...)
 // 	//unsigned int a = 123;
 // 	//long g = 234;
 
-// 	int res = ft_printf(" %012d asdf", -11);
+// 	int res = ft_printf(" %12.7d asdf", 1122);
 // 	printf("\n");
-// 	int res2 = printf(" %012d asdf", -11);
+// 	int res2 = printf(" %12.7d asdf", 1122);
 // 	printf("\n");
 // 	printf("%d\n", res);
 // 	printf("%d\n",res2);
