@@ -17,7 +17,7 @@ int get_num_len_base(unsigned int num, int base)
 	return (res);
 }
 
-char	*ft_itoa_base(unsigned int num, char *encode, int len, int base)
+char	*ft_itoa_base(unsigned int num, char *encode, int len, unsigned int base)
 {
 	char *res;
 
