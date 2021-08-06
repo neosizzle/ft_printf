@@ -23,9 +23,9 @@ void	generate_addr_str(unsigned long addr, char *hex, int count, int *p_l)
 		if (!count)
 		{
 			ft_putchar_fd(hex[addr % 16], 1);
-			(*p_l) ++;
+			(*p_l)++;
 		}
-		(*p_l) += count+2;
+		(*p_l) += count + 2;
 		return ;
 	}
 	generate_addr_str(addr >> 4, hex, count + 1, p_l);
@@ -51,11 +51,11 @@ void	ft_handlepointer(int *print_len, t_format format, va_list argp)
 		if (format.width.exist)
 			ft_handle_width(print_len, format.width.value - offset, 1);
 	}
-	else{
+	else
+	{
 		if (format.width.exist)
 			ft_handle_width(print_len, format.width.value - offset, 1);
 		ft_putstr_fd("0x", 1);
 		generate_addr_str(addr, hex, 0, print_len);
 	}
-
 }

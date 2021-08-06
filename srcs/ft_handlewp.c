@@ -12,11 +12,10 @@ void	ft_handle_width(int *print_len, int width, int is_space)
 		c = '0';
 	while (width > 0)
 	{
-		ft_putchar_fd(c,1);
+		ft_putchar_fd(c, 1);
 		width--;
 		(*print_len)++;
 	}
-	
 }
 
 void	ft_handle_width_num(int *print_len, int width, int is_space, int num)
@@ -37,7 +36,6 @@ void	ft_handle_width_num(int *print_len, int width, int is_space, int num)
 		width--;
 		(*print_len)++;
 	}
-	
 }
 
 char	*generate_percise_str(char *num_str, int percision, long num)
@@ -56,8 +54,8 @@ char	*generate_percise_str(char *num_str, int percision, long num)
 	i = 0;
 	if (num < 0)
 	{
-			res[i++] = '-';
-			len -= 2;
+		res[i++] = '-';
+		len -= 2;
 	}
 	while (i < percision - len)
 		res[i++] = '0';
