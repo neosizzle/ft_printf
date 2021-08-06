@@ -38,6 +38,15 @@ void	ft_width_n(int *print_len, int width, int is_space, int num)
 	}
 }
 
+static void	fill_neg(int num, int *i, char *res, int *len)
+{
+	if (num < 0)
+	{
+		res[(*i++)] = '-';
+		(*len) -= 2;
+	}
+}
+
 char	*generate_percise_str(char *num_str, int percision, long num)
 {
 	char	*res;
@@ -52,11 +61,7 @@ char	*generate_percise_str(char *num_str, int percision, long num)
 		return (num_str);
 	}
 	i = 0;
-	if (num < 0)
-	{
-		res[i++] = '-';
-		len -= 2;
-	}
+	fill_neg(num , &i, res, &len);
 	while (i < percision - len)
 		res[i++] = '0';
 	res[i] = 0;
