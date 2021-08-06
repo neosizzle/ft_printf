@@ -38,12 +38,13 @@ int	populate_format(t_format *format, char **input, int *index)
 	if ((*input)[*index] == '-')
 	{
 		format->is_minus = YES;
-		(*index)++;
+		++(*index);
 	}
-	if ((*input)[*index] == '0' && !format->is_minus)
+	if ((*input)[*index] == '0')
 	{
-		format->is_space = NO;
-		(*index)++;
+		if (!format->is_minus)
+			format->is_space = NO;
+		++(*index);
 	}
 	if (ft_isdigit((*input)[*index]) && (*input)[*index] != '0')
 	{
@@ -119,7 +120,7 @@ int	ft_printf(const char *input, ...)
 	res = parse_input((char *)input, argp);
 	return (res);
 }
-//
+
 // #include <stdio.h>
 // int	main()
 // {
@@ -129,12 +130,12 @@ int	ft_printf(const char *input, ...)
 // 	//unsigned int a = 123;
 // 	//long g = 234;
 
-// 	int res = ft_printf("%-1c", '0');
+// 	int res = ft_printf("|%-3s |", "");
 // 	printf("\n");
-// 	int res2 = printf("%-1c", '0');
+// 	int res2 = printf("|%-3s |", "");
 // 	printf("\n");
 // 	printf("%d\n", res);
 // 	printf("%d\n",res2);
-// 	//printf("|%8.1d|\n", 1234);
+// 	//ft_printf("%-3s ", "");
 // 	return 0;
 // }
