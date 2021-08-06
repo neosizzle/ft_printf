@@ -68,7 +68,7 @@ void	ft_handleint(int *print_len, t_format format, va_list argp)
 	else
 	{
 		if (format.width.exist)
-			ft_handle_width_num(print_len, format.width.value - num_len, format.is_space, *num_str, num);
+			ft_handle_width_num(print_len, format.width.value - num_len, format.is_space, &num_str, num);
 		write(1, num_str, num_len);
 	}
 	(*print_len) += num_len;
