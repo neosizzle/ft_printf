@@ -54,7 +54,7 @@ static void	write_negative(char *num_str, int num_len)
 	int	i;
 
 	i = 1;
-	while (i < len)
+	while (i < num_len)
 		ft_putchar_fd(num_str[i++], 1);
 }
 
