@@ -110,22 +110,22 @@ int	ft_printf(const char *input, ...)
 	return (res);
 }
 
-// #include <stdio.h>
-// #include <limits.h>
-// int	main()
-// {
-// 	//char *s = "vsdfasdfasdf";
-// 	//char *s2 = "hjjhjjl";	
-// 	//int		d = 2323;
-// 	//unsigned int a = 123;
-// 	//long g = 234;
+#include <stdio.h>
+#include <limits.h>
+int	main()
+{
+	//char *s = "vsdfasdfasdf";
+	char *s2 = NULL;	
+	//int		d = 2323;
+	//unsigned int a = 123;
+	//long g = 234;
 
-// 	int res = ft_printf(" %12.7d asdf", 1122);
-// 	printf("\n");
-// 	int res2 = printf(" %12.7d asdf", 1122);
-// 	printf("\n");
-// 	printf("%d\n", res);
-// 	printf("%d\n",res2);
-// 	// printf(" %03d ", -11);
-// 	return 0;
-// }
+	int res = ft_printf(" %s", s2);
+	printf("\n");
+	int res2 = printf(" %s", s2);
+	printf("\n");
+	printf("%d\n", res);
+	printf("%d\n",res2);
+	// printf(" %03d ", -11);
+	return 0;
+}

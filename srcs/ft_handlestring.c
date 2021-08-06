@@ -11,7 +11,11 @@ void	ft_handlestr(int *print_len, t_format format, va_list argp)
 
 	string = va_arg(argp, char *);
 	if (string == NULL)
+	{
+		ft_putstr_fd("(null)", 1);
+		*print_len += 6;
 		return ;
+	}
 	len = ft_strlen(string);
 	if (format.percision.exist)
 		len = ft_min(ft_strlen(string), format.percision.value);
