@@ -29,14 +29,14 @@ int	ft_min(int a, int b)
 int	is_in_enum(char c)
 {
 	if (c == STRING
-	|| c == CHARACTER
-	|| c == POINTER
-	|| c == INTEGER
-	|| c == DECIMAL
-	|| c == UNSIGNED_INTEGER
-	|| c == HEX_LOWCASE
-	|| c == HEX_UPCASE
-	|| c == PERCENT)
+			|| c == CHARACTER
+			|| c == POINTER
+			|| c == INTEGER
+			|| c == DECIMAL
+			|| c == UNSIGNED_INTEGER
+			|| c == HEX_LOWCASE
+			|| c == HEX_UPCASE
+			|| c == PERCENT)
 		return (1);
 	return (0);
 }
