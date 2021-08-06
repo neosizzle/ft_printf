@@ -50,12 +50,10 @@ void	ft_handlepointer(int *print_len, t_format format, va_list argp)
 		generate_addr_str(addr, hex, 0, print_len);
 		if (format.width.exist)
 			ft_handle_width(print_len, format.width.value - offset, 1);
+		return ;
 	}
-	else
-	{
-		if (format.width.exist)
-			ft_handle_width(print_len, format.width.value - offset, 1);
-		ft_putstr_fd("0x", 1);
-		generate_addr_str(addr, hex, 0, print_len);
-	}
+	if (format.width.exist)
+		ft_handle_width(print_len, format.width.value - offset, 1);
+	ft_putstr_fd("0x", 1);
+	generate_addr_str(addr, hex, 0, print_len);
 }
