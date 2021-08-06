@@ -63,8 +63,8 @@ char	*generate_percise_str(char *num_str, int percision, long num)
 	i = 0;
 	if (num < 0)
 	{
-		res[(*i++)] = '-';
-		(*len) -= 2;
+		res[(i++)] = '-';
+		(len) -= 2;
 	}
 	while (i < percision - len)
 		res[i++] = '0';
