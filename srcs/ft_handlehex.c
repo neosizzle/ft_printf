@@ -49,12 +49,12 @@ void	ft_handlehex(int *print_len, t_format format, va_list argp)
 	{
 		ft_putstr_fd(num_str, 1);
 		if (format.width.exist)
-			ft_handle_width(print_len, format.width.value - numlen, 1);
+			ft_handle_width(print_len, format.width.value - numlen, format.is_space);
 	}
 	else
 	{
 		if (format.width.exist)
-			ft_handle_width(print_len, format.width.value - numlen, 1);
+			ft_handle_width(print_len, format.width.value - numlen, format.is_space);
 		ft_putstr_fd(num_str, 1);
 	}
 	(*print_len) += numlen;
