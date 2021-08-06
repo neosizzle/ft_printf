@@ -38,13 +38,13 @@ void	ft_handlehex(int *print_len, t_format format, va_list argp)
 	char			*hex;
 	char			*num_str;
 
-	num = va_arg(argp, unsigned int);
-	numlen = get_num_len_base(num, 16);
-	num_str = ft_itoa_base(num, hex, numlen, 16);
 	if (format.type == HEX_LOWCASE)
 		hex = "0123456789abcdef";
 	else
 		hex = "0123456789ABCDEF";
+	num = va_arg(argp, unsigned int);
+	numlen = get_num_len_base(num, 16);
+	num_str = ft_itoa_base(num, hex, numlen, 16);
 	if (format.is_minus)
 	{
 		ft_putstr_fd(num_str, 1);
