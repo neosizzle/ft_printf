@@ -127,17 +127,17 @@ int	ft_printf(const char *input, ...)
 // int	main()
 // {
 // 	//char *s = "vsdfasdfasdf";
-// 	char *s2 = "hjjhjjl";	
-// 	int		d = 2323;
+// 	//char *s2 = "hjjhjjl";	
+// 	//int		d = 2323;
 // 	//unsigned int a = 123;
 // 	//long g = 234;
 
-// 	int res = ft_printf("| %-13p, %-40p|", &d, &s2);
+// 	int res = ft_printf(" %012d asdf", -11);
 // 	printf("\n");
-// 	int res2 = printf("| %-13p, %-40p|", &d, &s2);
+// 	int res2 = printf(" %012d asdf", -11);
 // 	printf("\n");
 // 	printf("%d\n", res);
 // 	printf("%d\n",res2);
-// 	//ft_printf("%-3s ", "");
+// 	// printf(" %03d ", -11);
 // 	return 0;
 // }

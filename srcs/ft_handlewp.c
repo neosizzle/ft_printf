@@ -18,7 +18,7 @@ void	ft_handle_width(int *print_len, int width, int is_space)
 	
 }
 
-void	ft_handle_width_num(int *print_len, int width, int is_space, char **num_str, int num)
+void	ft_handle_width_num(int *print_len, int width, int is_space, int num)
 {
 	char	c;
 
@@ -29,7 +29,6 @@ void	ft_handle_width_num(int *print_len, int width, int is_space, char **num_str
 	if (num < 0 && !is_space)
 	{
 		ft_putchar_fd('-',1);
-		(*num_str)++;
 	}
 	while (width > 0)
 	{
