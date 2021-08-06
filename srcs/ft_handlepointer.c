@@ -1,5 +1,4 @@
 #include "ft_printf.h"
-#include <stdio.h>
 
 //this file has functions that handles the pointers
 
@@ -41,13 +40,22 @@ void	ft_handlepointer(int *print_len, t_format format, va_list argp)
 
 	addr = va_arg(argp, unsigned long);
 	hex = "0123456789abcdef";
-	//printf("%u\n", addr)
 	if (addr > 2147483647)
 		offset = 10;
 	else
 		offset = 11;
-	if (format.width.exist)
-		ft_handle_width(print_len, format.width.value - offset, 1);
-	ft_putstr_fd("0x", 1);
-	generate_addr_str(addr, hex, 0, print_len);
+	if (format.is_minus)
+	{
+		ft_putstr_fd("0x", 1);
+		generate_addr_str(addr, hex, 0, print_len);
+		if (format.width.exist)
+			ft_handle_width(print_len, format.width.value - offset, 1);
+	}
+	else{
+		if (format.width.exist)
+			ft_handle_width(print_len, format.width.value - offset, 1);
+		ft_putstr_fd("0x", 1);
+		generate_addr_str(addr, hex, 0, print_len);
+	}
+
 }
