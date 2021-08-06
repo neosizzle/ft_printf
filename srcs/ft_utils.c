@@ -45,7 +45,7 @@ int	is_in_enum(char c)
 void	gen_hex(char c, char **hex)
 {
 	if (c == HEX_LOWCASE)
-		return("0123456789abcdef");
+		return ("0123456789abcdef");
 	else
-		return("0123456789ABCDEF");
+		return ("0123456789ABCDEF");
 }
