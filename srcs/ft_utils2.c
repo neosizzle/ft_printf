@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-void	toggle_width(t_format *format, char *input, int *index)
+void	toggle_width(t_format *format, char **input, int *index)
 {
 	format->width.exist = YES;
 	format->width.value = ft_move_atoi(input, index);

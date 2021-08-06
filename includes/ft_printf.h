@@ -73,7 +73,7 @@ char	*ft_itoa_len(int num, int *print_len);
 char	*ft_itoa_base(unsigned int num, char *enc, int len, unsigned int base);
 char	*gen_hex(char c);
 void	wri_wid_num(t_format format, char *n_str, int n_len, int *p_l);
-void	toggle_width(t_format *format, char *input, int *index);
+void	toggle_width(t_format *format, char **input, int *index);
 void	toggle_zero(t_format *format, int *index);
 void	toggle_minus(t_format *format, int *index);
 
