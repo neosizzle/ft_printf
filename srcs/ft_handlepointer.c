@@ -40,7 +40,7 @@ void	ft_handlepointer(int *print_len, t_format format, va_list argp)
 
 	addr = va_arg(argp, unsigned long);
 	hex = "0123456789abcdef";
-	if (addr > 2147483647)
+	if (addr >= 2147483647)
 		offset = 10;
 	else
 		offset = 11;
