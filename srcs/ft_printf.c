@@ -34,7 +34,18 @@ int	populate_format(t_format *format, char **input, int *index)
 	char	current;
 
 	current = (*input)[*index];
-	if (ft_isdigit(current))
+
+	if (current == '-')
+	{
+		format->is_minus = YES;
+		++(*index);
+	}
+	if (current == '0' && !format->is_minus)
+	{
+		format->is_space = NO;
+		++(*index);
+	}
+	if (ft_isdigit(current) && current != '0')
 	{
 		format->width.exist = YES;
 		format->width.value = ft_move_atoi(input, index);
@@ -49,7 +60,7 @@ int	populate_format(t_format *format, char **input, int *index)
 			format->percision.value = 0;
 	}
 	current = (*input)[*index];
-	if (current == STRING || current == CHARACTER || current == POINTER || current == INTEGER || current == DECIMAL || current == UNSIGNED_INTEGER || current == HEX_LOWCASE || current == HEX_UPCASE || current == PERCENT)
+	if (is_in_enum(current))
 		format->type = current;
 	else
 		return (0);
@@ -60,6 +71,8 @@ int	populate_format(t_format *format, char **input, int *index)
 //this function will set a format struct into default values
 void	reset_format(t_format *format)
 {
+	format->minus = NO;
+	format->is_space = YES;
 	format->width.exist = NO;
 	format->percision.exist = NO;
 	format->type = TBC;

@@ -24,3 +24,19 @@ int	ft_min(int a, int b)
 		return (a);
 	return (b);
 }
+
+//checks if a char is inside enum
+int	is_in_enum(char c)
+{
+	if (current == STRING
+	|| current == CHARACTER
+	|| current == POINTER
+	|| current == INTEGER
+	|| current == DECIMAL
+	|| current == UNSIGNED_INTEGER
+	|| current == HEX_LOWCASE
+	|| current == HEX_UPCASE
+	|| current == PERCENT)
+		return (1);
+	return (0);
+}
