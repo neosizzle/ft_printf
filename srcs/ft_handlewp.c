@@ -48,7 +48,7 @@ char	*generate_percise_str(char *num_str, int percision, int num)
 
 	res = (char *)malloc(sizeof(char) * (percision + 2));
 	len = (int)ft_strlen(num_str);
-	if (num_str > percision)
+	if (len > percision)
 	{
 		free(res);
 		return (num_str);
