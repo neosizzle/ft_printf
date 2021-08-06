@@ -3,14 +3,15 @@
 //this file has functions that handles the strings
 
 //handle str (main func)
+//ft_putstr_fd("(null)", 1);
 void	ft_handlestr(int *print_len, t_format format, va_list argp)
 {
 	char	*string;
 	size_t	len;
 
 	string = va_arg(argp, char *);
-	if (string == 0)
-		ft_putstr_fd("(null)", 1);
+	if (string == NULL)
+		return ;
 	len = ft_strlen(string);
 	if (format.percision.exist)
 		len = ft_min(ft_strlen(string), format.percision.value);
