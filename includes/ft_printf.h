@@ -56,11 +56,15 @@ void	ft_handlechar(int *print_len, t_format format, va_list argp);
 void	ft_handlepointer(int *print_len, t_format format, va_list argp);
 void	ft_handleint(int *print_len, t_format format, va_list argp);
 void	ft_handle_unsigned(int *print_len, t_format format, va_list argp);
+void	ft_handlehex(int *print_len, t_format format, va_list argp);
+
 //utils
 int		ft_move_atoi(char **input, int *i);
 int		ft_min(int a, int b);
 int		get_num_len(unsigned long num);
+int		get_num_len_base(unsigned int num, int base);
 void	generate_addr_str(unsigned long addr, char *hex, int count, int *print_len);
 char	*ft_itoa_len(int num, int *print_len);
+char	*ft_itoa_base(unsigned int num, char *encode, int len, int base);
 
 #endif

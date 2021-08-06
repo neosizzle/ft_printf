@@ -7,16 +7,21 @@
 //by calling specific helper func
 void	process_format(t_format format, int *print_len, va_list argp)
 {
-	if (format.type == STRING)
+	char	type;
+
+	type = format.type;
+	if (type == STRING)
 		ft_handlestr(print_len, format, argp);
-	else if (format.type == CHARACTER)
+	else if (type == CHARACTER)
 		ft_handlechar(print_len, format, argp);
-	else if (format.type == POINTER)
+	else if (type == POINTER)
 		ft_handlepointer(print_len, format, argp);
-	else if (format.type == INTEGER || format.type == DECIMAL)
+	else if (type == INTEGER || type == DECIMAL)
 		ft_handleint(print_len, format, argp);
-	else if (format.type == UNSIGNED_INTEGER)
+	else if (type == UNSIGNED_INTEGER)
 		ft_handle_unsigned(print_len, format, argp);
+	else if (type == HEX_LOWCASE || type == HEX_UPCASE)
+		ft_handlehex(print_len, format, argp);
 }
 
 //this function will populate a format struct according
