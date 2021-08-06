@@ -62,32 +62,32 @@ static void	write_negative(char *num_str, int num_len)
 void	ft_handleint(int *p_l, t_format format, va_list argp)
 {
 	int				num;
-	int				numlen;
+	int				nlen;
 	char			*num_str;
 
 	num = va_arg(argp, int);
-	numlen = get_signed_numlen(num);
+	nlen = get_signed_num_len(num);
 	num_str = ft_itoa(num);
 	if (format.percision.exist)
 	{
 		num_str = generate_percise_str(num_str, format.percision.value, num);
-		numlen = ft_strlen(num_str);
+		nlen = ft_strlen(num_str);
 	}
 	if (format.is_minus)
 	{
-		write(1, num_str, numlen);
+		write(1, num_str, nlen);
 		if (format.width.exist)
-			ft_handle_width(p_l, format.width.value - numlen, format.is_space);
+			ft_handle_width(p_l, format.width.value - nlen, format.is_space);
 	}
 	else
 	{
 		if (format.width.exist)
-			ft_handle_width_num(p_l, format.width.value - numlen, format.is_space, num);
+			ft_handle_width_num(p_l, format.width.value - nlen, format.is_space, num);
 		if (num < 0 && !format.is_space)
-			write_negative(num_str, numlen);
+			write_negative(num_str, nlen);
 		else
-			write(1, num_str, numlen);
+			write(1, num_str, nlen);
 	}
-	(*p_l) += numlen;
+	(*p_l) += nlen;
 	free(num_str);
 }
