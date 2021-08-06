@@ -28,11 +28,11 @@ void	ft_handle_width_num(int *print_len, int width, int is_space, int num)
 		c = '0';
 	if (num < 0 && !is_space)
 	{
-		ft_putchar_fd('-',1);
+		ft_putchar_fd('-', 1);
 	}
 	while (width > 0)
 	{
-		ft_putchar_fd(c,1);
+		ft_putchar_fd(c, 1);
 		width--;
 		(*print_len)++;
 	}

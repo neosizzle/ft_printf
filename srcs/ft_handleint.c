@@ -32,14 +32,14 @@ char	*ft_itoa_len(int num, int *print_len)
 	if (num == 0)
 	{
 		res[0] = '0';
-		(*print_len) ++;
+		(*print_len)++;
 		return (res);
 	}
 	if (num < 0)
 	{
 		res[0] = '-';
 		num *= -1;
-		(*print_len) ++;
+		(*print_len)++;
 	}
 	while (num > 0)
 	{
@@ -59,9 +59,9 @@ static void	write_negative(char *num_str, int num_len)
 }
 
 //shell
-void	ft_handleint(int *print_len, t_format format, va_list argp)
+void	ft_handleint(int *p_l, t_format format, va_list argp)
 {
-	int	num;
+	int				num;
 	int				num_len;
 	char			*num_str;
 
@@ -77,17 +77,17 @@ void	ft_handleint(int *print_len, t_format format, va_list argp)
 	{
 		write(1, num_str, num_len);
 		if (format.width.exist)
-			ft_handle_width(print_len, format.width.value - num_len, format.is_space);
+			ft_handle_width(p_l, format.width.value - num_len, format.is_space);
 	}
 	else
 	{
 		if (format.width.exist)
-			ft_handle_width_num(print_len, format.width.value - num_len, format.is_space, num);
+			ft_handle_width_num(p_l, format.width.value - num_len, format.is_space, num);
 		if (num < 0 && !format.is_space)
 			write_negative(num_str, num_len);
 		else
 			write(1, num_str, num_len);
 	}
-	(*print_len) += num_len;
+	(*p_l) += num_len;
 	free(num_str);
 }
