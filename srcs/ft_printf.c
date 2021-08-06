@@ -71,7 +71,7 @@ int	populate_format(t_format *format, char **input, int *index)
 //this function will set a format struct into default values
 void	reset_format(t_format *format)
 {
-	format->minus = NO;
+	format->is_minus = NO;
 	format->is_space = YES;
 	format->width.exist = NO;
 	format->percision.exist = NO;
