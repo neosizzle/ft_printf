@@ -9,7 +9,7 @@ void	ft_handlestr(int *print_len, t_format format, va_list argp)
 	size_t	len;
 
 	string = va_arg(argp, char *);
-	if (!string)
+	if (!*string)
 		ft_putstr_fd("(null)", 1);
 	len = ft_strlen(string);
 	if (format.percision.exist)
