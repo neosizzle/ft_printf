@@ -114,7 +114,7 @@ int	ft_printf(const char *input, ...)
 // int	main()
 // {
 // 	//char *s = "vsdfasdfasdf";
-// 	char *s2 = NULL;	
+// 	//char *s2 = NULL;	
 // 	//int		d = 2323;
 // 	//unsigned int a = 123;
 // 	//long g = 234;
