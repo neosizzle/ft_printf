@@ -34,8 +34,8 @@ void	ft_handlestr(int *print_len, t_format format, va_list argp)
 	if (format.percision.exist)
 		len = ft_min(ft_strlen(string), format.percision.value);
 	if (format.is_minus)
-		write_width(format, string, len, p_l);
+		write_width(format, string, len, print_len);
 	else
-		width_write(format, string, len, p_l);
+		width_write(format, string, len, print_len);
 	*print_len += (int)len;
 }
