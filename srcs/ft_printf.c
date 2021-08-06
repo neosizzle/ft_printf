@@ -107,7 +107,7 @@ int	parse_input(char *input, va_list argp)
 			ft_putchar_fd(input[i++], 1);
 			print_len++;
 		}
-		va_arg(argp, int);
+		//va_arg(argp, int);
 	}
 	return (print_len);
 }
