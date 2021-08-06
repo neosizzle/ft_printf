@@ -31,10 +31,10 @@ char	*ft_itoa_base(unsigned int num, char *enc, int len, unsigned int base)
 	return (res);
 }
 
-static void	write_width_num(int numlen, t_format format, int *p_l, char *num_str)
+static void	write_width_num(int nl, t_format format, int *p_l, char *num_str)
 {
 	if (format.width.exist)
-		ft_handle_width(p_l, format.width.value - numlen, format.is_space);
+		ft_handle_width(p_l, format.width.value - nl, format.is_space);
 	ft_putstr_fd(num_str, 1);
 }
 
