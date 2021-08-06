@@ -1,5 +1,4 @@
 #include "ft_printf.h"
-
 //this file has functions that handles the hex
 
 int get_num_len_base(unsigned int num, int base)
@@ -25,7 +24,7 @@ char	*ft_itoa_base(unsigned int num, char *encode, int len, unsigned int base)
 	res[len--] = 0;
 	while (len)
 	{
-		res[len] = encode[num % base];
+		res[len] = encode[0];
 		num /= base;
 		len--;
 	}
