@@ -30,7 +30,6 @@ void	ft_handle_width_num(int *print_len, int width, int is_space, char **num_str
 	{
 		ft_putchar_fd('-',1);
 		(*num_str)++;
-		(*print_len)++;
 	}
 	while (width > 0)
 	{
