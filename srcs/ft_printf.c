@@ -107,6 +107,7 @@ int	parse_input(char *input, va_list argp)
 			ft_putchar_fd(input[i++], 1);
 			print_len++;
 		}
+		va_arg(argp, int);
 	}
 	return (print_len);
 }
@@ -120,19 +121,20 @@ int	ft_printf(const char *input, ...)
 	res = parse_input((char *)input, argp);
 	return (res);
 }
-//
+
 // #include <stdio.h>
+// #include <limits.h>
 // int	main()
 // {
 // 	//char *s = "vsdfasdfasdf";
-// 	//char *s2 = "hjjhjjl";	
-// 	//int		d = 2323;
+// 	char *s2 = "hjjhjjl";	
+// 	int		d = 2323;
 // 	//unsigned int a = 123;
 // 	//long g = 234;
 
-// 	int res = ft_printf("|%-3s |", "");
+// 	int res = ft_printf("| %-13p, %-40p|", &d, &s2);
 // 	printf("\n");
-// 	int res2 = printf("|%-3s |", "");
+// 	int res2 = printf("| %-13p, %-40p|", &d, &s2);
 // 	printf("\n");
 // 	printf("%d\n", res);
 // 	printf("%d\n",res2);
