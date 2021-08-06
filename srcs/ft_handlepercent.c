@@ -4,5 +4,5 @@
 void	ft_handlepercent(int *print_len)
 {
 	ft_putchar_fd('%' , 1);
-	(*printlen++);
+	(*print_len)++;
 }
