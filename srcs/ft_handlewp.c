@@ -40,7 +40,7 @@ void	ft_handle_width_num(int *print_len, int width, int is_space, int num)
 	
 }
 
-char	*generate_percise_str(char *num_str, int percision, int num)
+char	*generate_percise_str(char *num_str, int percision, long num)
 {
 	char	*res;
 	int		i;
