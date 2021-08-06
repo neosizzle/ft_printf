@@ -42,7 +42,7 @@ static char	*ft_itoa_uns(unsigned int num)
 }
 
 //shell
-void	ft_handle_unsigned(int *print_len, t_format format, va_list argp)
+void	ft_handle_unsigned(int *p_l, t_format format, va_list argp)
 {
 	unsigned int	num;
 	int				num_len;
@@ -60,14 +60,14 @@ void	ft_handle_unsigned(int *print_len, t_format format, va_list argp)
 	{
 		write(1, num_str, num_len);
 		if (format.width.exist)
-			ft_handle_width(print_len, format.width.value - num_len, format.is_space);
+			ft_handle_width(p_l, format.width.value - num_len, format.is_space);
 	}
 	else
 	{
 		if (format.width.exist)
-			ft_handle_width(print_len, format.width.value - num_len, format.is_space);
+			ft_handle_width(p_l, format.width.value - num_len, format.is_space);
 		write(1, num_str, num_len);
 	}
-	(*print_len) += num_len;
+	(*p_l) += num_len;
 	free(num_str);
 }

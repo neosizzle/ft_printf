@@ -19,6 +19,5 @@ void	ft_handlechar(int *print_len, t_format format, va_list argp)
 			ft_handle_width(print_len, format.width.value - 1, 1);
 		ft_putchar_fd(c, 1);
 	}
-	
 	(*print_len)++;
 }
