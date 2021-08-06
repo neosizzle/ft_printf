@@ -72,5 +72,8 @@ void	ft_handleint(int *print_len, t_format format, va_list argp)
 		write(1, num_str, num_len);
 	}
 	(*print_len) += num_len;
-	free(num_str);
+	if (num < 0)
+		free(--num_str);
+	else
+		free(num_str);
 }
