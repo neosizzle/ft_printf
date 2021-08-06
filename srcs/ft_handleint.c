@@ -59,6 +59,8 @@ void	ft_handleint(int *print_len, t_format format, va_list argp)
 	num = va_arg(argp, int);
 	num_len = get_signed_num_len(num);
 	num_str = ft_itoa(num);
+	if (format.percision.exist)
+		ft_handle_width(print_len, format.percision.value - num_len, 0);
 	if (format.is_minus)
 	{
 		write(1, num_str, num_len);
@@ -71,8 +73,6 @@ void	ft_handleint(int *print_len, t_format format, va_list argp)
 			ft_handle_width(print_len, format.width.value - num_len, 1);
 		write(1, num_str, num_len);	
 	}
-	if (format.percision.exist)
-		ft_handle_percision(print_len, num, format.percision.value);
 	(*print_len) += num_len;
 	free(num_str);
 }
