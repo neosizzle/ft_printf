@@ -9,6 +9,8 @@ NAME = libftprintf.a
 
 all : ${NAME}
 
+bonus : ${NAME}
+
 ${NAME} : 
 	make re -C ${LIBS}
 	${CC} ${CCFLAGS} -c ${SRCS} -I ${INCLUDE}
