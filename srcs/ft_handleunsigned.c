@@ -41,6 +41,13 @@ static char	*ft_itoa_uns(unsigned int num)
 	return (res);
 }
 
+static void	print_width_write(int * p_l, t_format format, char *num_str, int num_len)
+{
+	if (format.width.exist)
+			ft_handle_width(p_l, format.width.value - num_len, format.is_space);
+	write(1, num_str, num_len);
+}
+
 //shell
 void	ft_handle_unsigned(int *p_l, t_format format, va_list argp)
 {
@@ -63,11 +70,7 @@ void	ft_handle_unsigned(int *p_l, t_format format, va_list argp)
 			ft_handle_width(p_l, format.width.value - num_len, format.is_space);
 	}
 	else
-	{
-		if (format.width.exist)
-			ft_handle_width(p_l, format.width.value - num_len, format.is_space);
-		write(1, num_str, num_len);
-	}
+		print_width_write(p_l, format, num_str, num_len);
 	(*p_l) += num_len;
 	free(num_str);
 }
