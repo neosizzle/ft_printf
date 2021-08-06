@@ -17,8 +17,3 @@ void	ft_handle_width(int *print_len, int width, int is_space)
 	}
 	
 }
-
-// void	ft_handle_percision(int num_len, long *num, int percision);
-// {
-
-// }

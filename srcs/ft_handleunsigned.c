@@ -51,8 +51,6 @@ void	ft_handle_unsigned(int *print_len, t_format format, va_list argp)
 	num = va_arg(argp, unsigned int);
 	num_len = get_unsigned_num_len(num);
 	num_str = ft_itoa_uns(num);
-	if (format.percision.exist)
-		ft_handle_width(print_len, format.width.value - num_len, 0);
 	if (format.is_minus)
 	{
 		write(1, num_str, num_len);
