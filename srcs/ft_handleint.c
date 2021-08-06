@@ -49,6 +49,15 @@ char	*ft_itoa_len(int num, int *print_len)
 	return (res);
 }
 
+static void	write_negative(char *num_str, int num_len)
+{
+	int	i;
+
+	i = 1;
+	while (i < len)
+		ft_putchar_fd(num_str[i++], 1);
+}
+
 //shell
 void	ft_handleint(int *print_len, t_format format, va_list argp)
 {
@@ -70,7 +79,7 @@ void	ft_handleint(int *print_len, t_format format, va_list argp)
 		if (format.width.exist)
 			ft_handle_width_num(print_len, format.width.value - num_len, format.is_space, num);
 		if (num < 0 && !format.is_space)
-			write(1, num_str, num_len);
+			write_negative(num_str, num_len);
 		else
 			write(1, num_str, num_len);
 	}
