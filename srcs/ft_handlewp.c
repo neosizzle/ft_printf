@@ -38,14 +38,11 @@ void	ft_width_n(int *print_len, int width, int is_space, int num)
 	}
 }
 
-// static void	fill_neg(int num, int *i, char *res, int *len)
-// {
-// 	if (num < 0)
-// 	{
-// 		res[(*i++)] = '-';
-// 		(*len) -= 2;
-// 	}
-// }
+static void	init_res_len(char *num_str, int percision, char **res, int *len)
+{
+	*res = (char *)malloc(sizeof(char) * (percision + 2));
+	*len = (int)ft_strlen(num_str);
+}
 
 char	*generate_percise_str(char *num_str, int percision, long num)
 {
@@ -53,8 +50,7 @@ char	*generate_percise_str(char *num_str, int percision, long num)
 	int		i;
 	int		len;
 
-	res = (char *)malloc(sizeof(char) * (percision + 2));
-	len = (int)ft_strlen(num_str);
+	init_res_len(num_str, percision, &res, &len);
 	if (len > percision)
 	{
 		free(res);
