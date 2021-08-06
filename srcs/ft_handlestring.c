@@ -20,7 +20,8 @@ void	ft_handlestr(int *print_len, t_format format, va_list argp)
 		if (format.width.exist)
 			ft_handle_width(print_len, format.width.value - (int)len, 1);
 	}
-	else{
+	else
+	{
 		if (format.width.exist)
 			ft_handle_width(print_len, format.width.value - (int)len, 1);
 		write(1, string, len);
