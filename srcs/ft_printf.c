@@ -22,6 +22,8 @@ void	process_format(t_format format, int *print_len, va_list argp)
 		ft_handle_unsigned(print_len, format, argp);
 	else if (type == HEX_LOWCASE || type == HEX_UPCASE)
 		ft_handlehex(print_len, format, argp);
+	else if (type == PERCENT)
+		ft_handlepercent(print_len, format, argp);
 }
 
 //this function will populate a format struct according
