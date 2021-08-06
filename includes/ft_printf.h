@@ -65,6 +65,6 @@ int		get_num_len(unsigned long num);
 int		get_num_len_base(unsigned int num, int base);
 void	generate_addr_str(unsigned long addr, char *hex, int count, int *print_len);
 char	*ft_itoa_len(int num, int *print_len);
-char	*ft_itoa_base(unsigned int num, char *encode, int len, int base);
+char	*ft_itoa_base(unsigned int num, char *encode, int len, unsigned int  base);
 
 #endif
