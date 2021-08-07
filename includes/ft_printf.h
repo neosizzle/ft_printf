@@ -10,71 +10,47 @@
 # define YES 1
 # define NO 0
 
-//struct to store either width or percision values
-typedef struct s_wpvalue
-{
-	short	exist;
-	int		value;
-}	t_wpvalue;
-
-//enum to store the format types
-typedef enum e_format_type
-{
-	TBC = -1,
-	STRING = 's',
-	CHARACTER = 'c',
-	POINTER = 'p',
-	INTEGER = 'i',
-	DECIMAL = 'd',
-	UNSIGNED_INTEGER = 'u',
-	HEX_LOWCASE = 'x',
-	HEX_UPCASE = 'X',
-	PERCENT = '%',
-}				t_format_type;
-
-//struct to store the current format
+//struct to store format types
 typedef struct s_format
 {
-	int				is_minus;
-	int				is_space;
-	t_wpvalue		width;
-	t_wpvalue		percision;
-	t_format_type	type;
+	va_list	args;
+	int		sign;
+	int		prc;
+	int		minus;
+	int		count;
+	int		width;
+	int		spc;
+	int		zero;
+	int		cap_x;
+	int		hash;
 }	t_format;
+
 
 //the functions
 //parsing and populating input
 int		ft_printf(const char *input, ...);
-int		parse_input(char *format, va_list argp);
-int		populate_format(t_format *format, char **input, int *index);
-void	reset_format(t_format *format);
 
 //processing format
-void	process_format(t_format format, int *print_len, va_list argp);
-void	ft_handle_width(int	*print_len, int width, int is_space);
-void	ft_width_n(int *print_len, int width, int is_space, int num);
-void	ft_handlestr(int *print_len, t_format format, va_list argp);
-void	ft_handlechar(int *print_len, t_format format, va_list argp);
-void	ft_handlepointer(int *print_len, t_format format, va_list argp);
-void	ft_handleint(int *print_len, t_format format, va_list argp);
-void	ft_handle_unsigned(int *print_len, t_format format, va_list argp);
-void	ft_handlehex(int *print_len, t_format format, va_list argp);
-void	ft_handlepercent(int *print_len);
+void	process_char(t_format *flags);
+void	process_str(t_format *flags);
+void	process_ptr(t_format *flags);
+void	process_dec(t_format *flags);
+void	process_u(t_format *flags);
+void	process_x(t_format *flags);
+
+//printint format
+void	print_char(t_format *flags);
+void	print_char_wdt(t_format *flags);
+void	print_char_wdt_minus(t_format *flags);
+void	print_ptr(t_format *flags);
+void	print_dec(t_format *flags);
 
 //utils
-int		ft_move_atoi(char **input, int *i);
-int		ft_min(int a, int b);
+void	ft_putnbr_fd_long(unsigned int num, int fd);
+char	*ft_rev(char *str);
 int		is_in_enum(char c);
-int		get_num_len(unsigned long num);
-int		get_num_len_base(unsigned int num, int base);
-void	generate_addr_str(unsigned long addr, char *hex, int count, int *p_l);
-char	*generate_percise_str(char *num_str, int percision, long num);
-char	*ft_itoa_len(int num, int *print_len);
-char	*ft_itoa_base(unsigned int num, char *enc, int len, unsigned int base);
-char	*gen_hex(char c);
-void	wri_wid_num(t_format format, char *n_str, int n_len, int *p_l);
-void	toggle_width(t_format *format, char **input, int *index);
-void	toggle_zero(t_format *format, int *index);
-void	toggle_minus(t_format *format, int *index);
+char	*ft_itoa_base16(unsigned long long num);
+void	ft_putnchar_fd(char c, int n, int fd);
+char	*ft_itoa_long(long long num);
 
 #endif
