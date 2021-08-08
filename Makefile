@@ -1,8 +1,8 @@
-SRCS=./srcs/*.c ./cases/*.c ./utils/*.c ./libft/*.c
+SRCS=srcs/*.c cases/*.c utils/*.c libft/*.c
 OBJS=*.o
-INCLUDE = ./includes
+INCLUDE = includes
 ARRCS = ar rcs
-LIBFT = ./libft
+LIBFT = libft
 CCFLAGS = -Wall -Werror -Wextra
 CC = gcc
 NAME = libftprintf.a
@@ -12,7 +12,7 @@ all : ${NAME}
 bonus : ${NAME}
 
 ${NAME} : 
-	make re -C ./libft
+	make re -C libft
 	${CC} ${CCFLAGS} -c ${SRCS}  -I ${INCLUDE}
 	${ARRCS} ${NAME} ${OBJS} ${LIBFT}/*.o
 
