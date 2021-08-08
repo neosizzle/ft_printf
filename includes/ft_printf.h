@@ -16,6 +16,7 @@ typedef struct s_format
 	va_list	args;
 	int		sign;
 	int		prc;
+	int		dot;
 	int		minus;
 	int		count;
 	int		width;
@@ -24,7 +25,6 @@ typedef struct s_format
 	int		cap_x;
 	int		hash;
 }	t_format;
-
 
 //the functions
 //parsing and populating input
