@@ -3,8 +3,8 @@
 //this prints 0x0 and adds count 3 to format
 static void	print_null_ptr(t_format *flags)
 {
-	flags->count += 5;
-	ft_putstr_fd("(nil)", 1);
+	flags->count += 3;
+	ft_putstr_fd("0x0", 1);
 }
 
 //this evaluates the count and spaces
