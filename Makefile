@@ -1,4 +1,4 @@
-SRCS=srcs/*.c cases/*.c utils/*.c libft/*.c
+SRCS=srcs/*.c cases/*.c utils/*.c
 OBJS=*.o
 INCLUDE = includes
 ARRCS = ar rcs
