@@ -18,7 +18,6 @@ CC = gcc
 NAME = libft.a
 
 all : ${NAME}
-		make clean
 
 bonus : ${NAME} ${BONUS_OBJS}
 	${ARRCS} ${NAME} ${BONUS_OBJS}

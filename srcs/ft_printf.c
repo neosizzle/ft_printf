@@ -5,66 +5,48 @@
 //this func will take the format and the argp
 //and it will process and print the things 
 //by calling specific helper func
-void	process_format(t_format format, int *print_len, va_list argp)
+static void	handle_specifier(t_format *format, char *input, int idx)
 {
-	char	type;
-
-	type = format.type;
-	if (type == STRING)
-		ft_handlestr(print_len, format, argp);
-	else if (type == CHARACTER)
-		ft_handlechar(print_len, format, argp);
-	else if (type == POINTER)
-		ft_handlepointer(print_len, format, argp);
-	else if (type == INTEGER || type == DECIMAL)
-		ft_handleint(print_len, format, argp);
-	else if (type == UNSIGNED_INTEGER)
-		ft_handle_unsigned(print_len, format, argp);
-	else if (type == HEX_LOWCASE || type == HEX_UPCASE)
-		ft_handlehex(print_len, format, argp);
-	else if (type == PERCENT)
-		ft_handlepercent(print_len);
-}
-
-//this function will populate a format struct according
-//to the input. 
-//returns 1 if succeed and 0 if it doses not
-int	populate_format(t_format *format, char **input, int *index)
-{
-	char	current;
-
-	current = (*input)[*index];
-	if ((*input)[*index] == '-')
-		toggle_minus(format, index);
-	if ((*input)[*index] == '0')
-		toggle_zero(format, index);
-	if (ft_isdigit((*input)[*index]) && (*input)[*index] != '0')
-		toggle_width(format, input, index);
-	if ((*input)[*index] == '.')
-	{
-		format->percision.exist = YES;
-		if (ft_isdigit((*input)[++(*index)]))
-			format->percision.value = ft_move_atoi(input, index);
-		else
-			format->percision.value = 0;
-	}
-	current = (*input)[*index];
-	if (is_in_enum(current))
-		format->type = current;
-	else
-		return (0);
-	(*input)++;
-	return (1);
+	if (input[idx] == 'c')
+		process_char(format);
+	if (input[idx] == 's')
+		process_str(format);
+	if (input[idx] == 'i' || input[idx] == 'd')
+		process_dec(format);
+	if (input[idx] == 'u')
+		process_u(format);
+	if (input[idx] == 'x' || input[idx] == 'X')
+		process_x(format);
+	if (input[idx] == 'p')
+		process_ptr(format);
+	if (input[idx] == '%')
+		format->count += write(1, &input[idx], 1);
 }
 
 //this function will set a format struct into default values
-void	reset_format(t_format *format)
+static t_format	*reset_format(t_format *flags)
 {
-	format->is_minus = NO;
-	format->is_space = YES;
-	format->width.exist = NO;
-	format->percision.exist = NO;
-	format->type = TBC;
+	flags->sign = 0;
+	flags->prc = 0;
+	flags->dot = 0;
+	flags->minus = 0;
+	flags->count = 0;
+	flags->width = 0;
+	flags->spc = 0;
+	flags->zero = 0;
+	flags->cap_x = 0;
+	flags->hash = 0;
+	return (flags);
+}
+
+static int	is_specifier(char c)
+{
+	char	*specs;
+
+	specs = "csupdiuxX%";
+	if (ft_strchr(specs, c))
+		return (1);
+	return (0);
 }
 
 //this function will trverse through the input string 
@@ -73,40 +55,55 @@ void	reset_format(t_format *format)
 //2. populate the format type
 //3. process the format and print accordingly with argp
 //if not, just print that character to the screen
-int	parse_input(char *input, va_list argp)
+static int	handle_flags(t_format *flags, char *input, int idx)
 {
-	int			print_len;
-	int			i;
-	t_format	format;
-
-	print_len = 0;
-	i = 0;
-	while (input[i])
+	while (!is_specifier(input[idx]))
 	{
-		if (input[i] == '%' && input[i + 1])
-		{
-			i++;
-			reset_format(&format);
-			if (!populate_format(&format, &input, &i))
-				return (-1);
-			process_format(format, &print_len, argp);
-		}
-		else
-		{
-			ft_putchar_fd(input[i++], 1);
-			print_len++;
-		}
+		if (input[idx] == '-')
+			flags->minus = 1;
+		if (input[idx] == ' ')
+			flags->spc = 1;
+		if (ft_isdigit(input[idx]) && !flags->prc && input[idx - 1] != '.')
+			flags->width = (flags->width * 10) + (input[idx] - '0');
+		else if (ft_isdigit(input[idx]) && flags->dot)
+			flags->prc = (flags->prc * 10) + (input[idx] - '0');
+		if (input[idx] == '0' && !flags->minus && !flags->prc && !flags->width)
+			flags->zero = 1;
+		if (input[idx] == '+')
+			flags->sign = 1;
+		if (input[idx] == '.')
+			flags->dot = 1;
+		if (input[idx] == '#')
+			flags->hash = 2;
+		idx++;
 	}
-	return (print_len);
+	if (input[idx] == 'X')
+		flags->cap_x = 1;
+	handle_specifier(flags, input, idx);
+	return (idx);
 }
 
 int	ft_printf(const char *input, ...)
 {
-	va_list	argp;
-	int		res;
+	t_format	*flags;
+	int			res;
+	int			i;
 
-	va_start(argp, input);
-	res = parse_input((char *)input, argp);
+	res = 0;
+	flags = (t_format *)malloc(sizeof(t_format));
+	i = -1;
+	va_start(flags->args, input);
+	while (input[++i])
+	{
+		flags = reset_format(flags);
+		if (input[i] == '%')
+			i = handle_flags(flags, (char *)input, i + 1);
+		else
+			res += write(1, &input[i], 1);
+		res += flags->count;
+	}
+	va_end(flags->args);
+	free(flags);
 	return (res);
 }
 // #include <stdio.h>
@@ -114,14 +111,14 @@ int	ft_printf(const char *input, ...)
 // int	main()
 // {
 // 	//char *s = "vsdfasdfasdf";
-// 	//char *s2 = NULL;	
+// 	char *s2 = NULL;	
 // 	//int		d = 2323;
 // 	//unsigned int a = 123;
 // 	//long g = 234;
 
-// 	int res = ft_printf(" %s", s2);
+// 	int res = ft_printf("|%12s|", s2);
 // 	printf("\n");
-// 	int res2 = printf(" %s", s2);
+// 	int res2 = printf("|%12s|", s2);
 // 	printf("\n");
 // 	printf("%d\n", res);
 // 	printf("%d\n",res2);

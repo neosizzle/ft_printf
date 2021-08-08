@@ -14,10 +14,10 @@ ${NAME} :
 	${CC} ${CCFLAGS} ${SRCS} -I ${INCLUDE}
 
 clean : 
-	rm ${OBJS}
+	rm -f ${OBJS}
 
 fclean : clean
-	rm ${NAME}
+	rm -f ${NAME}
 
 re : fclean all
 
